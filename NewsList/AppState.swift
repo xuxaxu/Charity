@@ -7,7 +7,42 @@ struct AppState {
     var activityFeed: [Activity] = []
     var dataFromPersistance = false
     var currentPage = 1
+    var sources = [String: Bool]()
+}
+
+struct SourcesView {
+    private var state: AppState
     
+    init(state: AppState) {
+        self.state = state
+    }
+    
+    var sources: [String] {
+        state.sources.keys.map{ String($0) }
+    }
+}
+
+struct SourcesState {
+    private var state: AppState
+    init(state: AppState) {
+        self.state = state
+    }
+    var sources: [String] {
+        get {
+            state.sources.keys.map{ String($0) }
+        }
+        set {}
+    }
+    var selected: [Bool] {
+        get {
+            self.sources.map{ state.sources[$0]! }
+        }
+        set {
+            for index in 0..<newValue.count {
+                state.sources[self.sources[index]] = newValue[index]
+            }
+        }
+    }
 }
 
 struct NewsListView {
@@ -75,5 +110,15 @@ extension AppState {
             return NewsListView(state: self)
         }
         set {}
+    }
+    var sourcesState: SourcesState {
+        get {
+            SourcesState(state: self)
+        }
+        set {
+            for index in 0..<newValue.sources.count {
+                self.sources[newValue.sources[index]] = newValue.selected[index]
+            }
+        }
     }
 }

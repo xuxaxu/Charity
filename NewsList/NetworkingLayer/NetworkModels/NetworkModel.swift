@@ -15,3 +15,17 @@ struct NetworkArticle: Decodable {
 struct NetworkSource: Decodable {
     let name: String
 }
+
+struct NetworkSources: Decodable {
+    let status: String
+    let sources: [String]
+}
+
+struct Sources: Decodable {
+    let id: String?
+    let name: String?
+    let description: String?
+    let category: String?
+    let language: String?
+    let country: String?
+}

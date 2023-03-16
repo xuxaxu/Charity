@@ -95,9 +95,15 @@ enum ImagesAction<Item: ItemWithImage>: Equatable {
     case empty
 }
 
-let appReducer: Reducer<AppState, AppAction<Article>> = combine(pullback(itemsReducer, value: \.items, action: \.items),
-                                                                pullback(dataReducer, value: \.loadState, action: \.keySelf ),
-                                                                pullback(imageReducer, value: \.items, action: \.images))
+let appReducer: Reducer<AppState, AppAction<Article>> = combine(pullback(itemsReducer,
+                                                                         value: \.items,
+                                                                         action: \.items),
+                                                                pullback(dataReducer,
+                                                                         value: \.loadState,
+                                                                         action: \.keySelf ),
+                                                                pullback(imageReducer,
+                                                                         value: \.items,
+                                                                         action: \.images))
 
 struct EnumKeyPath<Root, Value> {
     let embed: (Value) -> Root
@@ -115,8 +121,9 @@ func itemsReducer<Item: ItemWithImage>(state: inout [Item], action: ItemsAction<
         var effects = [Effect<ImagesAction<Item>>]()
         for item in state {
             if let url = item.urlToImage {
-                let imageEffect: Effect<ImagesAction<Item>> = getImageEffect(url: url)
-                effects.append(imageEffect)
+                let imageActionEffect: Effect<ImagesAction<Item>> = CurrentItemsWithImage.loadImage(url: url)
+                    .map{ $0 == nil ? .empty : .addImage(url, $0!) }
+                effects.append(imageActionEffect)
             }
         }
         return effects.map{ $0.map{ .image($0) } }

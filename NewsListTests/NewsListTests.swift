@@ -5,7 +5,7 @@ final class NewsListTests: XCTestCase {
 
     override func setUpWithError() throws {
         try? super.setUpWithError()
-        Current = .mock
+        CurrentItemsWithImage = .mock
     }
 
     func testItemsActionClear() {

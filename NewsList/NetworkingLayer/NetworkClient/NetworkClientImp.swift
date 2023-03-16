@@ -71,39 +71,6 @@ struct NetworkClientImp: NetworkClient {
         return nil
     }
     
-    @discardableResult
-    func rawDataRequest(request: URLRequest,
-                        completion: @escaping (Result<Data, Error>) -> Void) -> Cancellable? {
-        
-            let task = urlSession.dataTask(with: request) { data, response, _ in
-                guard let response = response as? HTTPURLResponse,
-                      let data = data
-                else {
-                    NetworkClientImp.executeCompletionOnMainThread {
-                        completion(.failure(HTTPError.failedResponseUnwrapping))
-                    }
-
-                    return
-                }
-
-                let handledResponse = HTTPNetworkResponse.handleNetworkResponse(for: response)
-
-                switch handledResponse {
-                case .success:
-                        NetworkClientImp.executeCompletionOnMainThread {
-                            completion(.success(data))
-                        }
-                case let .failure(error):
-                    NetworkClientImp.executeCompletionOnMainThread {
-                        completion(.failure(error))
-                    }
-                }
-            }
-
-            task.resume()
-            return task
-    }
-    
     // MARK: - Private
 
     private func createUrlRequest(from request: HTTPRequest) throws -> URLRequest {

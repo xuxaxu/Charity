@@ -54,3 +54,18 @@ final class NewsListNetworkServiceImp: NewsListNetworkService {
         )
     }
 }
+
+let getSourcesRequest: Effect<URLRequest?> = {
+    Effect {callback in
+        let appendingString = "/top-headlines/sources"
+        
+        guard let url = URL(string: Constants.baseUrl + appendingString) else {
+            callback(nil)
+            return
+        }
+        var generatedRequest: URLRequest = .init(url: url)
+        generatedRequest.httpMethod = HTTPMethod.get.rawValue
+        generatedRequest.addValue(Constants.apiKey, forHTTPHeaderField: Constants.headerApiKey)
+        callback(generatedRequest)
+    }
+}()

@@ -1,18 +1,18 @@
 import Foundation
 
 #if DEBUG
-var Current = ArticlesEnvironment.mock
+var CurrentPersistance = ArticlesPersistanceEnvironment.mock
 #else
-let Current = ArticlesEnvironment.live
+let CurrentPersistance = ArticlesPersistanceEnvironment.live
 #endif
 
-struct ArticlesEnvironment {
+struct ArticlesPersistanceEnvironment {
     var fileClient: FileClient
 }
 
-extension ArticlesEnvironment {
-    static let live = ArticlesEnvironment(fileClient: .live)
-    static let mock = ArticlesEnvironment(fileClient: .mock)
+extension ArticlesPersistanceEnvironment {
+    static let live = ArticlesPersistanceEnvironment(fileClient: .live)
+    static let mock = ArticlesPersistanceEnvironment(fileClient: .mock)
 }
 
 struct FileClient {
