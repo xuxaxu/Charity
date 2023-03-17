@@ -31,11 +31,15 @@
 		C91A367129A39E6800BFB1F1 /* ArticleNetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A367029A39E6800BFB1F1 /* ArticleNetworkParser.swift */; };
 		C91A367329A3BAF900BFB1F1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A367229A3BAF900BFB1F1 /* Store.swift */; };
 		C91A367529A3BD2A00BFB1F1 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A367429A3BD2A00BFB1F1 /* Reducers.swift */; };
+		C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58BE29C459C800A6CC8F /* SourceView.swift */; };
+		C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58C029C45BA500A6CC8F /* DesignSizes.swift */; };
 		C950E8C529C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */; };
 		C9D3E8BF29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */; };
 		C9D3E8C129C1E4810019A3ED /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C029C1E4810019A3ED /* ItemsListView.swift */; };
 		C9D3E8C329C1E7380019A3ED /* ChooseSourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C229C1E7380019A3ED /* ChooseSourcesView.swift */; };
 		C9D3E8C529C1E7DF0019A3ED /* SourcesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C429C1E7DF0019A3ED /* SourcesReducer.swift */; };
+		C9F86E1529C35DC2006F5CBA /* SourcesEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F86E1429C35DC2006F5CBA /* SourcesEnvironment.swift */; };
+		C9F86E1729C399B2006F5CBA /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F86E1629C399B2006F5CBA /* FlagView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,11 +87,15 @@
 		C91A367029A39E6800BFB1F1 /* ArticleNetworkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleNetworkParser.swift; sourceTree = "<group>"; };
 		C91A367229A3BAF900BFB1F1 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C91A367429A3BD2A00BFB1F1 /* Reducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
+		C93F58BE29C459C800A6CC8F /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
+		C93F58C029C45BA500A6CC8F /* DesignSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSizes.swift; sourceTree = "<group>"; };
 		C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePersistanceEnvironment.swift; sourceTree = "<group>"; };
 		C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsWithImageEnvironment.swift; sourceTree = "<group>"; };
 		C9D3E8C029C1E4810019A3ED /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		C9D3E8C229C1E7380019A3ED /* ChooseSourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSourcesView.swift; sourceTree = "<group>"; };
 		C9D3E8C429C1E7DF0019A3ED /* SourcesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesReducer.swift; sourceTree = "<group>"; };
+		C9F86E1429C35DC2006F5CBA /* SourcesEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesEnvironment.swift; sourceTree = "<group>"; };
+		C9F86E1629C399B2006F5CBA /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +231,7 @@
 			children = (
 				C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */,
 				C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */,
+				C9F86E1429C35DC2006F5CBA /* SourcesEnvironment.swift */,
 			);
 			path = Enviroments;
 			sourceTree = "<group>";
@@ -239,10 +248,13 @@
 		C9D3E8BC29C1AB460019A3ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C93F58C029C45BA500A6CC8F /* DesignSizes.swift */,
 				C91A362429A38B3100BFB1F1 /* ContentView.swift */,
 				C9D3E8C029C1E4810019A3ED /* ItemsListView.swift */,
 				C9D3E8C229C1E7380019A3ED /* ChooseSourcesView.swift */,
 				C91A366E29A395FA00BFB1F1 /* DetailView.swift */,
+				C9F86E1629C399B2006F5CBA /* FlagView.swift */,
+				C93F58BE29C459C800A6CC8F /* SourceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +409,8 @@
 			files = (
 				C91A367129A39E6800BFB1F1 /* ArticleNetworkParser.swift in Sources */,
 				C91A362C29A38B3100BFB1F1 /* Persistence.swift in Sources */,
+				C9F86E1529C35DC2006F5CBA /* SourcesEnvironment.swift in Sources */,
+				C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */,
 				C91A366829A3926C00BFB1F1 /* HTTPNetworkResponse.swift in Sources */,
 				C91A366F29A395FA00BFB1F1 /* DetailView.swift in Sources */,
 				C91A366A29A3926C00BFB1F1 /* HTTPError.swift in Sources */,
@@ -405,7 +419,9 @@
 				C91A367529A3BD2A00BFB1F1 /* Reducers.swift in Sources */,
 				C91A366B29A3926C00BFB1F1 /* NewsListNetworkService.swift in Sources */,
 				C91A362529A38B3100BFB1F1 /* ContentView.swift in Sources */,
+				C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */,
 				C91A362F29A38B3200BFB1F1 /* NewsList.xcdatamodeld in Sources */,
+				C9F86E1729C399B2006F5CBA /* FlagView.swift in Sources */,
 				C9D3E8BF29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift in Sources */,
 				C950E8C529C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift in Sources */,
 				C91A366D29A392CB00BFB1F1 /* Constants.swift in Sources */,

@@ -37,7 +37,6 @@ struct ItemsListView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            Text("Select an item")
         }
     }
 }

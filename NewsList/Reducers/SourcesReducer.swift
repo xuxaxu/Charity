@@ -2,16 +2,29 @@ import Foundation
 
 enum SourcesAction {
     case load
-    case tap(Int)
+    case on(Int)
+    case off(Int)
+    case set([Source])
+    case empty
+}
+
+enum FlagAction {
+    case on
+    case off
 }
 
 func sourceReducer(state: inout SourcesState, action: SourcesAction) -> [Effect<SourcesAction>] {
     switch action {
     case .load:
-        let dataEffect = getSourcesRequest.map{ $0 == nil ? nil : CurrentItemsWithImage.loadData(request: $0!) }
-        
-    case .tap(let index):
-        state.selected[index] = !state.selected[index]
+        return [CurrentSurces.load().map{ .set($0) }.recieve(on: .main)]
+    case .on(let index):
+        state.sources[index] = Source(state.sources[index], include: true)
+    case .off(let index):
+        state.sources[index] = Source(state.sources[index], include: false)
+    case .set(let sources):
+        state.sources = sources
+    case .empty:
+        break
     }
     return []
 }

@@ -4,7 +4,7 @@ struct NetworkModel: Decodable {
 }
 
 struct NetworkArticle: Decodable {
-    let source: NetworkSource?
+    let source: NetworkArticleSource?
     let title: String?
     let description: String?
     let url: String?
@@ -12,16 +12,16 @@ struct NetworkArticle: Decodable {
     let publishedAt: String?
 }
 
-struct NetworkSource: Decodable {
+struct NetworkArticleSource: Decodable {
     let name: String
 }
 
 struct NetworkSources: Decodable {
     let status: String
-    let sources: [String]
+    let sources: [NetworkSource]
 }
 
-struct Sources: Decodable {
+struct NetworkSource: Decodable {
     let id: String?
     let name: String?
     let description: String?

@@ -8,8 +8,3 @@ struct Constants {
     static let posibleDomains = ["bbc.com", "techcrunch.com", "engadget.com", "thenextweb.com", "breitbart.com", "clickhole.com"]
     static let domains = "bbc.com"
 }
-
-struct DesignSizes {
-    static let cornerRadius: CGFloat = 20
-    static let offset: CGFloat = 30
-}

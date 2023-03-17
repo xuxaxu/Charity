@@ -68,3 +68,4 @@ public let loadDataEffect: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<Dat
     let effect: Effect<Data?> = dataEffect.map { $0.0 == nil ? nil : $0.0! }
     return effect
 }
+

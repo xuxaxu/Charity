@@ -5,40 +5,8 @@ struct ContentView: View {
     @ObservedObject var store: Store<AppState, AppAction<Article>>
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Button("get \(Constants.domains)") {
-                    store.send(.reload)
-                }
-                List {
-                    ForEach(store.value.items) { item in
-                        NavigationLink {
-                            let id = item.id
-                            DetailView(store: store.view(value: { $0.items.first(where: { $0.id == id })! }, action: { $0 }))
-                        } label: {
-                            HStack {
-                                if let image = item.image {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .controlSize(.mini)
-                                        .scaledToFit()
-                                        .cornerRadius(DesignSizes.cornerRadius)
-                                }
-                                Text(item.title)
-                                Text(String(store.value.detailed[item.id] ?? 0))
-                            }
-                        }
-                    }
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Text(Constants.domains)
-                        .foregroundColor(.secondary)
-                }
-            }
-            Text("Select an item")
-        }
+       //ItemsListView(store: store)
+        ChooseSourcesView(store: Store(value: store.value.sourcesState, reducer: sourceReducer))
     }
 }
 
