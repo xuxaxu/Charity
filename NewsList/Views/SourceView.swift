@@ -7,19 +7,21 @@ struct SourceView: View {
             HStack(alignment: .top) {
                 Text(store.value.name)
                     .font(.headline)
+                    .layoutPriority(1)
                 VStack(alignment: .leading) {
                     Text(store.value.category ?? "")
                     Text(store.value.language ?? "")
                     Text(store.value.country ?? "")
                 }
                 .font(.caption)
+                .layoutPriority(1)
             }
-            .padding(DesignSizes.bigOffset)
+            //.padding(DesignSizes.bigOffset)
             Spacer()
             FlagView(store: store.view(value: { $0.include },
                                        action: { $0}))
         }
-        .padding(DesignSizes.bigOffset)
+        .padding(DesignSizes.offset)
     }
 }
 

@@ -11,9 +11,9 @@ struct ChooseSourcesView: View {
                 
                 List {
                     ForEach(store.value.sources) { item in
-                        SourceView(store: store.view(value: {$0.sources[$0.sources.firstIndex(of: item)!]},
+                        SourceView(store: store.view(value: {$0.sources[$0.sources.firstIndex(where: { $0.id == item.id})!]},
                                                      action: { action in
-                            let index = store.value.sources.firstIndex(of: item)!
+                            let index = store.value.sources.firstIndex(where: {$0.id == item.id})!
                             return action == .on ? .on(index) : .off(index)}))
                     }
                 }
