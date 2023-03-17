@@ -158,10 +158,90 @@
             filePath = "NewsList/Reducers/SourcesReducer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "sourceReducer(state:action:)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EF321E1-132E-41B8-999A-63402583F519"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "614A4130-6B2D-4F75-B50D-403E4BA32770"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Enviroments/NetworkClientEnvironment.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "173C29AC-7992-4977-8D21-829622B86101"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Enviroments/SourcesEnvironment.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "173C29AC-7992-4977-8D21-829622B86101 - 64d0f1ea1676dbc0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;NewsList.NetworkSource&gt;) -&gt; Swift.Array&lt;NewsList.Source&gt; in variable initialization expression of NewsList.getSourceFromNetworkSource : (Swift.Array&lt;NewsList.NetworkSource&gt;) -&gt; Swift.Array&lt;NewsList.Source&gt;"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Enviroments/SourcesEnvironment.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "173C29AC-7992-4977-8D21-829622B86101 - ea4dfab15e3040af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (NewsList.NetworkSource) -&gt; Swift.Optional&lt;NewsList.Source&gt; in closure #1 (Swift.Array&lt;NewsList.NetworkSource&gt;) -&gt; Swift.Array&lt;NewsList.Source&gt; in variable initialization expression of NewsList.getSourceFromNetworkSource : (Swift.Array&lt;NewsList.NetworkSource&gt;) -&gt; Swift.Array&lt;NewsList.Source&gt;"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Enviroments/SourcesEnvironment.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

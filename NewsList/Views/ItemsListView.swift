@@ -7,8 +7,15 @@ struct ItemsListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button("get \(Constants.domains)") {
-                    store.send(.reload)
+                HStack {
+                    NavigationLink { ChooseSourcesView(store: store.view(value: { $0.sourcesState},
+                                                                         action: { .sources($0) })) } label: { Text("setup domains") }
+                        .padding(DesignSizes.bigOffset)
+                    Spacer()
+                    Button("get news") {
+                        store.send(.reload)
+                    }
+                    .padding(DesignSizes.bigOffset)
                 }
                 List {
                     ForEach(store.value.items) { item in
@@ -33,7 +40,8 @@ struct ItemsListView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Text(Constants.domains)
+                    Text(store.value.domains)
+                        .lineLimit(3)
                         .foregroundColor(.secondary)
                 }
             }

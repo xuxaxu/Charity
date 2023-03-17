@@ -2,16 +2,18 @@ import Foundation
 import UIKit
 
 #if DEBUG
-var CurrentItemsWithImage = ItemsWithImageEnvironment.live //.mock
+var CurrentNetworkClient = NetworkClientEnvironment.live //.mock
 #else
-let CurrentItemsWithImage = ItemsWithImageEnvironment.live
+let CurrentNetworkClient = NetworkClientEnvironment.live
 #endif
 
-struct ItemsWithImageEnvironment {
-    private var restClient: RestClient
+struct NetworkClientEnvironment {
+    var restClient: RestClient
     
     public func loadData(request: URLRequest) -> Effect<Data?> {
-        loadDataEffect(restClient.request(request).recieve(on: .global()))
+        restClient.request(request)
+            .map(restClient.getData)
+            .recieve(on: .global())
     }
     
     public func loadImage(url: URL) -> Effect<UIImage?> {
@@ -21,27 +23,30 @@ struct ItemsWithImageEnvironment {
     }
 }
 
-extension ItemsWithImageEnvironment {
-    static let live = ItemsWithImageEnvironment(restClient: .live)
-    static let mock = ItemsWithImageEnvironment(restClient: .mock)
+extension NetworkClientEnvironment {
+    static let live = NetworkClientEnvironment(restClient: .live)
+    static let mock = NetworkClientEnvironment(restClient: .mock)
 }
 
 public struct RestClient {
     var loadData: (URL) -> Effect<(Data?, URLResponse?, Error?)>
     var request: (URLRequest) -> Effect<(Data?, URLResponse?, Error?)>
     var loadImage: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<UIImage?>
+    var getData: (Data?, URLResponse?, Error?) -> Data?
 }
 
 extension RestClient {
     static let live = Self(loadData: dataTask,
                            request: urlRequestEffect,
-                           loadImage: loadImageEffect)
+                           loadImage: loadImageEffect,
+                           getData: dataMap)
     static let mock = Self(loadData: {_ in Effect{ _ in} },
                            request: {_ in Effect{ _ in}},
-                           loadImage: {_ in Effect{ _ in} })
+                           loadImage: {_ in Effect{ _ in} },
+                           getData: {_,_,_ in nil})
 }
 
-public let dataTask: (URL) -> Effect<(Data?, URLResponse?, Error?)> = { url in
+fileprivate let dataTask: (URL) -> Effect<(Data?, URLResponse?, Error?)> = { url in
     Effect { callback in
         URLSession.shared.dataTask(with: url) { data, response, error in
             callback((data, response, error))
@@ -50,7 +55,7 @@ public let dataTask: (URL) -> Effect<(Data?, URLResponse?, Error?)> = { url in
     }
 }
 
-public let urlRequestEffect: (URLRequest) -> Effect<(Data?, URLResponse?, Error?)> = { request in
+fileprivate let urlRequestEffect: (URLRequest) -> Effect<(Data?, URLResponse?, Error?)> = { request in
     Effect { callback in
         URLSession.shared.dataTask(with: request) { data, response, error in
             callback((data, response, error))
@@ -59,13 +64,11 @@ public let urlRequestEffect: (URLRequest) -> Effect<(Data?, URLResponse?, Error?
     }
 }
 
-public let loadImageEffect: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<UIImage?> = { dataEffect in
+fileprivate let loadImageEffect: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<UIImage?> = { dataEffect in
     let effect: Effect<UIImage?> = dataEffect.map { $0.0 == nil ? nil : UIImage(data: $0.0!) }
     return effect
 }
 
-public let loadDataEffect: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<Data?> = { dataEffect in
-    let effect: Effect<Data?> = dataEffect.map { $0.0 == nil ? nil : $0.0! }
-    return effect
+fileprivate let dataMap: (Data?, URLResponse?, Error?) -> Data? = { data, _, _ in
+    data
 }
-

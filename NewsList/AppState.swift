@@ -8,6 +8,9 @@ struct AppState {
     var dataFromPersistance = false
     var currentPage = 1
     var sources = [Source]()
+    var domains: String {
+        sources.filter{ $0.include }.reduce("", { $0.isEmpty ? $1.requestId : $0 + "," + $1.requestId } )
+    }
 }
 
 struct SourcesState {
@@ -70,6 +73,12 @@ struct LoadState {
         set {
             state.dataFromPersistance = newValue
         }
+    }
+    var domains: String {
+        get {
+            state.domains
+        }
+        set {}
     }
 }
 

@@ -5,8 +5,8 @@ struct ContentView: View {
     @ObservedObject var store: Store<AppState, AppAction<Article>>
 
     var body: some View {
-       //ItemsListView(store: store)
-        ChooseSourcesView(store: Store(value: store.value.sourcesState, reducer: sourceReducer))
+       ItemsListView(store: store)
+        //ChooseSourcesView(store: Store(value: store.value.sourcesState, reducer: sourceReducer))
     }
 }
 

@@ -15,6 +15,16 @@ struct Article: Identifiable, ItemWithImage, Equatable {
     var image: UIImage?
     let date: Date?
     var urlToImage: URL?
+    init(id: UUID, url: URL?, source: String?, title: String, text: String?, image: UIImage? = nil, date: Date?, urlToImage: URL? = nil) {
+        self.id = id
+        self.url = url
+        self.source = source
+        self.title = title
+        self.text = text
+        self.image = image
+        self.date = date
+        self.urlToImage = urlToImage
+    }
 }
 
 struct Activity {
@@ -48,13 +58,15 @@ struct Source: Identifiable, Equatable {
     let language: String?
     let country: String?
     let include: Bool
+    let requestId: String
     init(_ source: NetworkSource) {
-        self.id = UUID(uuidString: source.id ?? "") ?? UUID()
+        self.id = UUID()
         self.name = source.name ?? self.id.uuidString
         self.category = source.category
         self.language = source.language
         self.country = source.country
         self.include = false
+        self.requestId = source.id ?? ""
     }
     init(_ source: Source, include: Bool) {
         self.country = source.country
@@ -63,5 +75,6 @@ struct Source: Identifiable, Equatable {
         self.id = source.id
         self.name = source.name
         self.include = include
+        self.requestId = source.requestId
     }
 }

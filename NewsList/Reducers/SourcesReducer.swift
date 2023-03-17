@@ -6,6 +6,7 @@ enum SourcesAction {
     case off(Int)
     case set([Source])
     case empty
+    case finish
 }
 
 enum FlagAction {
@@ -24,6 +25,8 @@ func sourceReducer(state: inout SourcesState, action: SourcesAction) -> [Effect<
     case .set(let sources):
         state.sources = sources
     case .empty:
+        break
+    case .finish:
         break
     }
     return []

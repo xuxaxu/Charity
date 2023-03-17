@@ -11,9 +11,9 @@ struct SourcesEnvironment {
     
     var urlRequest: URLRequest?
     
-    var parseNetworkSources: (Effect<Data?>) -> Effect<[NetworkSource]>
+    var parseNetworkSources: (Data?) -> [NetworkSource]
     
-    var getSources: (Effect<[NetworkSource]>) -> Effect<[Source]>
+    var getSources: ([NetworkSource]) -> [Source]
     
     public func load() -> Effect<[Source]> {
         guard let urlRequest else {
@@ -21,7 +21,12 @@ struct SourcesEnvironment {
                 callback([])
             }
         }
-        return getSources(parseNetworkSources(loadDataEffect(restClient.request(urlRequest).recieve(on: .global())))).recieve(on: .main)
+        return restClient.request(urlRequest)
+                .map(restClient.getData)
+                .map(parseNetworkSources)
+                .recieve(on: .global())
+                .map(getSources)
+                .recieve(on: .main)
     }
 }
 
@@ -32,16 +37,22 @@ extension SourcesEnvironment {
                                          getSources: getSourceFromNetworkSource)
     static let mock = SourcesEnvironment(restClient: .mock,
                                          urlRequest: nil,
-                                         parseNetworkSources: {_ in Effect{_ in}},
-                                         getSources:  {_ in Effect{_ in}})
+                                         parseNetworkSources: {_ in []},
+                                         getSources:  {_ in []})
 }
 
-let parseNetworkSource: (Effect<Data?>) -> Effect<[NetworkSource]> = { dataEffect in
-    dataEffect.map({ ($0 == nil) ? [NetworkSource]() : (try? JSONDecoder().decode(NetworkSources.self, from: $0!).sources) ?? []})
+let parseNetworkSource: (Data?) -> [NetworkSource] = { data in
+    guard let data else {
+        return []
+    }
+    guard let sources = try? JSONDecoder().decode(NetworkSources.self, from: data).sources else {
+        return []
+    }
+    return sources
 }
 
-let getSourceFromNetworkSource: (Effect<[NetworkSource]>) -> Effect<[Source]> = { effectNet in
-    effectNet.map{ $0.compactMap{ Source($0) } }
+let getSourceFromNetworkSource: ([NetworkSource]) -> [Source] = { netSources in
+    netSources.compactMap{ Source($0) }
 }
 
 let getSourcesRequest: URLRequest? = {

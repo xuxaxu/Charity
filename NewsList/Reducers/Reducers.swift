@@ -5,6 +5,7 @@ enum AppAction<Item: ItemWithImage> {
     case reload
     case nextPortion
     case items(ItemsAction<Item>)
+    case sources(SourcesAction)
     
     var items: ItemsAction<Item>? {
         get {
@@ -45,6 +46,20 @@ enum AppAction<Item: ItemWithImage> {
                 return
             }
             self = .items(.image(newValue))
+        }
+    }
+    var sources: SourcesAction? {
+        get {
+            guard case let .sources(sourcesAction) = self else {
+                return nil
+            }
+            return sourcesAction
+        }
+        set {
+            guard case .sources = self, let newValue = newValue else {
+                return
+            }
+            self = .sources(newValue)
         }
     }
 }
@@ -103,7 +118,10 @@ let appReducer: Reducer<AppState, AppAction<Article>> = combine(pullback(itemsRe
                                                                          action: \.keySelf ),
                                                                 pullback(imageReducer,
                                                                          value: \.items,
-                                                                         action: \.images))
+                                                                         action: \.images),
+                                                                pullback(sourceReducer,
+                                                                         value: \.sourcesState,
+                                                                         action: \.sources))
 
 struct EnumKeyPath<Root, Value> {
     let embed: (Value) -> Root
@@ -121,7 +139,7 @@ func itemsReducer<Item: ItemWithImage>(state: inout [Item], action: ItemsAction<
         var effects = [Effect<ImagesAction<Item>>]()
         for item in state {
             if let url = item.urlToImage {
-                let imageActionEffect: Effect<ImagesAction<Item>> = CurrentItemsWithImage.loadImage(url: url)
+                let imageActionEffect: Effect<ImagesAction<Item>> = CurrentNetworkClient.loadImage(url: url)
                     .map{ $0 == nil ? .empty : .addImage(url, $0!) }
                 effects.append(imageActionEffect)
             }
@@ -154,9 +172,9 @@ func dataReducer(state: inout LoadState, action: AppAction<Article>) -> [Effect<
         state.currentPage = 1
         state.dataFromPersistance = false
         let page = state.currentPage
-        if let effect = makeLoadArticlesEffect(page) {
-            effects.append(effect)
-        }
+        let effect = CurrentArticleNetwork.load(state.domains, state.currentPage)  //makeLoadArticlesEffect(page) {
+            effects.append(effect.map{ .items(.set($0))})
+        
     case .nextPortion:
         guard !state.dataFromPersistance else {
             return []

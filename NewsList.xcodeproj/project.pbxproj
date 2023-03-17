@@ -33,8 +33,9 @@
 		C91A367529A3BD2A00BFB1F1 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A367429A3BD2A00BFB1F1 /* Reducers.swift */; };
 		C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58BE29C459C800A6CC8F /* SourceView.swift */; };
 		C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58C029C45BA500A6CC8F /* DesignSizes.swift */; };
+		C93F58C329C4766500A6CC8F /* ArticlesNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58C229C4766500A6CC8F /* ArticlesNetworkEnvironment.swift */; };
 		C950E8C529C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */; };
-		C9D3E8BF29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */; };
+		C9D3E8BF29C1ABD90019A3ED /* NetworkClientEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8BE29C1ABD90019A3ED /* NetworkClientEnvironment.swift */; };
 		C9D3E8C129C1E4810019A3ED /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C029C1E4810019A3ED /* ItemsListView.swift */; };
 		C9D3E8C329C1E7380019A3ED /* ChooseSourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C229C1E7380019A3ED /* ChooseSourcesView.swift */; };
 		C9D3E8C529C1E7DF0019A3ED /* SourcesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D3E8C429C1E7DF0019A3ED /* SourcesReducer.swift */; };
@@ -89,8 +90,9 @@
 		C91A367429A3BD2A00BFB1F1 /* Reducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
 		C93F58BE29C459C800A6CC8F /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
 		C93F58C029C45BA500A6CC8F /* DesignSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSizes.swift; sourceTree = "<group>"; };
+		C93F58C229C4766500A6CC8F /* ArticlesNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesNetworkEnvironment.swift; sourceTree = "<group>"; };
 		C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePersistanceEnvironment.swift; sourceTree = "<group>"; };
-		C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsWithImageEnvironment.swift; sourceTree = "<group>"; };
+		C9D3E8BE29C1ABD90019A3ED /* NetworkClientEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientEnvironment.swift; sourceTree = "<group>"; };
 		C9D3E8C029C1E4810019A3ED /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		C9D3E8C229C1E7380019A3ED /* ChooseSourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSourcesView.swift; sourceTree = "<group>"; };
 		C9D3E8C429C1E7DF0019A3ED /* SourcesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesReducer.swift; sourceTree = "<group>"; };
@@ -229,9 +231,10 @@
 		C9D3E8BA29C1AB200019A3ED /* Enviroments */ = {
 			isa = PBXGroup;
 			children = (
-				C9D3E8BE29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift */,
+				C9D3E8BE29C1ABD90019A3ED /* NetworkClientEnvironment.swift */,
 				C950E8C429C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift */,
 				C9F86E1429C35DC2006F5CBA /* SourcesEnvironment.swift */,
+				C93F58C229C4766500A6CC8F /* ArticlesNetworkEnvironment.swift */,
 			);
 			path = Enviroments;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				C9F86E1529C35DC2006F5CBA /* SourcesEnvironment.swift in Sources */,
 				C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */,
 				C91A366829A3926C00BFB1F1 /* HTTPNetworkResponse.swift in Sources */,
+				C93F58C329C4766500A6CC8F /* ArticlesNetworkEnvironment.swift in Sources */,
 				C91A366F29A395FA00BFB1F1 /* DetailView.swift in Sources */,
 				C91A366A29A3926C00BFB1F1 /* HTTPError.swift in Sources */,
 				C9D3E8C529C1E7DF0019A3ED /* SourcesReducer.swift in Sources */,
@@ -422,7 +426,7 @@
 				C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */,
 				C91A362F29A38B3200BFB1F1 /* NewsList.xcdatamodeld in Sources */,
 				C9F86E1729C399B2006F5CBA /* FlagView.swift in Sources */,
-				C9D3E8BF29C1ABD90019A3ED /* ItemsWithImageEnvironment.swift in Sources */,
+				C9D3E8BF29C1ABD90019A3ED /* NetworkClientEnvironment.swift in Sources */,
 				C950E8C529C09A7700A2CD55 /* ArticlePersistanceEnvironment.swift in Sources */,
 				C91A366D29A392CB00BFB1F1 /* Constants.swift in Sources */,
 				C91A365429A38E8700BFB1F1 /* AppState.swift in Sources */,
