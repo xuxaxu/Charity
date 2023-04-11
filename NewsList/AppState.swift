@@ -11,6 +11,7 @@ struct AppState {
     var domains: String {
         sources.filter{ $0.include }.reduce("", { $0.isEmpty ? $1.requestId : $0 + "," + $1.requestId } )
     }
+    var alertSourcesMoreThan20 = false
 }
 
 struct SourcesState {
@@ -19,12 +20,12 @@ struct SourcesState {
         self.state = state
     }
     var sources: [Source] {
-        get {
-            state.sources
-        }
-        set {
-            state.sources = newValue
-        }
+        get { state.sources }
+        set { state.sources = newValue }
+    }
+    var alertSourcesMoreThan20: Bool {
+        get { state.alertSourcesMoreThan20 }
+        set { state.alertSourcesMoreThan20 = newValue }
     }
 }
 
@@ -106,6 +107,7 @@ extension AppState {
         }
         set {
             self.sources = newValue.sources
+            self.alertSourcesMoreThan20 = newValue.alertSourcesMoreThan20
         }
     }
 }

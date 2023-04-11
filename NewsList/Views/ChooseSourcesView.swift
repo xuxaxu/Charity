@@ -16,6 +16,14 @@ struct ChooseSourcesView: View {
                             return action == .on ? .on(index) : .off(index)}))
                     }
                 }
+                /*
+                .alert(isPresented: Binding(get: { self.store.value.alertSourcesMoreThan20 },
+                                            set: {_ in})) {
+                    Alert(title: Text("21 sources choosen"),
+                          message: Text("more than 20 sources is forbidden"),
+                          dismissButton: .default(Text("OK")))
+                }
+                 */
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

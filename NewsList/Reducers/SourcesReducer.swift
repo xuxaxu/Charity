@@ -5,8 +5,7 @@ enum SourcesAction {
     case on(Int)
     case off(Int)
     case set([Source])
-    case empty
-    case finish
+    case closeAlert
 }
 
 enum FlagAction {
@@ -20,14 +19,16 @@ func sourceReducer(state: inout SourcesState, action: SourcesAction) -> [Effect<
         return [CurrentSurces.load().map{ .set($0) }.recieve(on: .main)]
     case .on(let index):
         state.sources[index] = Source(state.sources[index], include: true)
+        if state.sources.filter({ $0.include }).count > 20 {
+            state.sources[index] = Source(state.sources[index], include: false)
+            state.alertSourcesMoreThan20 = true
+        }
     case .off(let index):
         state.sources[index] = Source(state.sources[index], include: false)
     case .set(let sources):
         state.sources = sources
-    case .empty:
-        break
-    case .finish:
-        break
+    case .closeAlert:
+        state.alertSourcesMoreThan20 = false
     }
     return []
 }

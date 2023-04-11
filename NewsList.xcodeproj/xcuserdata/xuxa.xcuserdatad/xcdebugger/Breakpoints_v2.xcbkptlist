@@ -158,8 +158,8 @@
             filePath = "NewsList/Reducers/SourcesReducer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "sourceReducer(state:action:)"
             landmarkType = "9">
          </BreakpointContent>
