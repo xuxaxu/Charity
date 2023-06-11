@@ -1,13 +1,8 @@
 import Foundation
-
-#if DEBUG
-var CurrentArticleNetwork = ArticleNetworkEnvironment.live //.mock
-#else
-let CurrentArticleNetwork = ArticleNetworkEnvironment.live
-#endif
+import ComposableArchitecture
 
 struct ArticleNetworkEnvironment {
-    var restClient: RestClient
+    @Dependency(\.restClient) var restClient
     
     var urlRequest: (String, Int) -> URLRequest?
     
@@ -15,30 +10,28 @@ struct ArticleNetworkEnvironment {
     
     var getArticles: ([NetworkArticle]) -> [Article]
     
-    public func load(_ domains: String, _ page: Int) -> Effect<[Article]> {
+    public func load(_ domains: String, _ page: Int) async throws -> [Article] {
         guard let request = urlRequest(domains, page) else {
-            return Effect{ callback in
-                callback([])
-            }
+            return []
         }
-        return restClient.request(request)
-            .map(restClient.getData)
-            .map(parseNetworkArticles)
-            .recieve(on: .global())
-            .map(getArticles)
-            .recieve(on: .main)
+        return getArticles(parseNetworkArticles(try await restClient.request(request).data))
     }
 }
 
-extension ArticleNetworkEnvironment {
-    static let live = ArticleNetworkEnvironment(restClient: .live,
-                                                urlRequest: getArticlesRequest,
+extension ArticleNetworkEnvironment: DependencyKey {
+    static var liveValue: ArticleNetworkEnvironment = ArticleNetworkEnvironment(urlRequest: getArticlesRequest,
                                                 parseNetworkArticles: parseNetworkArticle,
                                                 getArticles: getArticleFromNetworkArticle)
-    static let mock = ArticleNetworkEnvironment(restClient: .mock,
-                                                urlRequest: {_,_ in nil},
+    static let mock = ArticleNetworkEnvironment(urlRequest: {_,_ in nil},
                                                 parseNetworkArticles: {_ in []},
                                                 getArticles:  {_ in []})
+}
+
+extension DependencyValues {
+    var articleNetwork: ArticleNetworkEnvironment {
+        get { self[ArticleNetworkEnvironment.self] }
+        set { self[ArticleNetworkEnvironment.self] = newValue }
+      }
 }
 
 let parseNetworkArticle: (Data?) -> [NetworkArticle] = { data in
@@ -71,8 +64,23 @@ let getArticlesRequest: (String, Int) -> URLRequest? = { domains, page in
         return nil
     }
     var generatedRequest: URLRequest = .init(url: url)
-    generatedRequest.httpMethod = HTTPMethod.get.rawValue
+    generatedRequest.httpMethod = "GET"
     generatedRequest.addValue(Constants.apiKey, forHTTPHeaderField: Constants.headerApiKey)
     
     return generatedRequest
+}
+
+struct ArticleNetworkParserImp {
+    func parse(article: NetworkArticle) -> Article? {
+        guard let title = article.title else {
+            return nil
+        }
+        return Article(id: UUID(),
+                       url: URL(string: article.url ?? ""),
+                       source: article.source?.name,
+                       title: title,
+                       text: article.description,
+                       date: Date() // article.publishedAt
+        )
+    }
 }

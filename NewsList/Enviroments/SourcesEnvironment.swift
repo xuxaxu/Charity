@@ -1,13 +1,8 @@
 import Foundation
-
-#if DEBUG
-var CurrentSurces = SourcesEnvironment.live //.mock
-#else
-let CurrentSources = SourcesEnvironment.live
-#endif
+import ComposableArchitecture
 
 struct SourcesEnvironment {
-    var restClient: RestClient
+    @Dependency(\.restClient) var restClient
     
     var urlRequest: URLRequest?
     
@@ -15,30 +10,28 @@ struct SourcesEnvironment {
     
     var getSources: ([NetworkSource]) -> [Source]
     
-    public func load() -> Effect<[Source]> {
+    public func load() async throws -> [Source] {
         guard let urlRequest else {
-            return Effect{ callback in
-                callback([])
-            }
+            return []
         }
-        return restClient.request(urlRequest)
-                .map(restClient.getData)
-                .map(parseNetworkSources)
-                .recieve(on: .global())
-                .map(getSources)
-                .recieve(on: .main)
+        return getSources(parseNetworkSources(try await restClient.request(urlRequest).data))
     }
 }
 
-extension SourcesEnvironment {
-    static let live = SourcesEnvironment(restClient: .live,
-                                         urlRequest: getSourcesRequest,
-                                         parseNetworkSources: parseNetworkSource,
-                                         getSources: getSourceFromNetworkSource)
-    static let mock = SourcesEnvironment(restClient: .mock,
-                                         urlRequest: nil,
-                                         parseNetworkSources: {_ in []},
+extension SourcesEnvironment: DependencyKey {
+    static var liveValue: SourcesEnvironment = Self(urlRequest: getSourcesRequest,
+                                                    parseNetworkSources: parseNetworkSource,
+                                                    getSources: getSourceFromNetworkSource)
+    
+    static let mock = SourcesEnvironment(parseNetworkSources: {_ in []},
                                          getSources:  {_ in []})
+}
+
+extension DependencyValues {
+    var sources: SourcesEnvironment {
+      get { self[SourcesEnvironment.self] }
+      set { self[SourcesEnvironment.self] = newValue }
+    }
 }
 
 let parseNetworkSource: (Data?) -> [NetworkSource] = { data in
@@ -62,7 +55,7 @@ let getSourcesRequest: URLRequest? = {
             return nil
         }
         var generatedRequest: URLRequest = .init(url: url)
-        generatedRequest.httpMethod = HTTPMethod.get.rawValue
+        generatedRequest.httpMethod = "GET"
         generatedRequest.addValue(Constants.apiKey, forHTTPHeaderField: Constants.headerApiKey)
         return generatedRequest
 }()

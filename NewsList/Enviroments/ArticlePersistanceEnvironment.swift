@@ -1,48 +1,44 @@
 import Foundation
-
-#if DEBUG
-var CurrentPersistance = ArticlesPersistanceEnvironment.mock
-#else
-let CurrentPersistance = ArticlesPersistanceEnvironment.live
-#endif
-
-struct ArticlesPersistanceEnvironment {
-    var fileClient: FileClient
-}
-
-extension ArticlesPersistanceEnvironment {
-    static let live = ArticlesPersistanceEnvironment(fileClient: .live)
-    static let mock = ArticlesPersistanceEnvironment(fileClient: .mock)
-}
+import ComposableArchitecture
 
 struct FileClient {
-    var save: (String, Data) -> Effect<Never>
-    var load: (String) -> Effect<Data?>
+    var save: (String, Data) -> ()
+    var load: (String) -> Data?
 }
 
-extension FileClient {
-    static let live = Self(save: { fileName, data in
-        Effect<Never> { _ in
+extension FileClient: DependencyKey {
+    static let liveValue: FileClient = Self(save: { fileName, data in
             let docPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                               .userDomainMask,
                                                               true)[0]
             let docURL = URL(fileURLWithPath: docPath)
             let articlePersistaneURL = docURL.appendingPathComponent(fileName)
-            return try! data.write(to: articlePersistaneURL)
+        do {
+            try data.write(to: articlePersistaneURL)
+        } catch {
+            return
         }
     },
-                           load: { filetName in
-        Effect<Data?> { callback in
+                           load: { fileName in
             let docPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                               .userDomainMask,
                                                               true)[0]
             let docURL = URL(fileURLWithPath: docPath)
-            let articlePersistanceURL = docURL.appendingPathComponent(filetName)
-            if let data = try? Data(contentsOf: articlePersistanceURL) {
-                callback(data)
-            }
+            let articlePersistanceURL = docURL.appendingPathComponent(fileName)
+        do {
+            let data = try Data(contentsOf: articlePersistanceURL)
+            return data
+        } catch {
+            return nil
         }
     })
-    static let mock = Self(save: {_,_ in Effect<Never>{ _ in}},
-                           load: {_ in Effect<Data?>{ _ in}})
+    static let mock = Self(save: {_,_ in },
+                           load: {_ in nil})
+}
+
+extension DependencyValues {
+    var fileClient: FileClient {
+        get { self[FileClient.self] }
+        set { self[FileClient.self] = newValue }
+    }
 }

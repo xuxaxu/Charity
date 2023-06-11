@@ -1,74 +1,72 @@
 import Foundation
 import UIKit
-
-#if DEBUG
-var CurrentNetworkClient = NetworkClientEnvironment.live //.mock
-#else
-let CurrentNetworkClient = NetworkClientEnvironment.live
-#endif
+import ComposableArchitecture
+import Combine
 
 struct NetworkClientEnvironment {
-    var restClient: RestClient
     
-    public func loadData(request: URLRequest) -> Effect<Data?> {
-        restClient.request(request)
-            .map(restClient.getData)
-            .recieve(on: .global())
+    @Dependency(\.restClient) var restClient
+    
+    public func loadData(request: URLRequest) async throws -> Data {
+        try await restClient.request(request).data
     }
     
-    public func loadImage(url: URL) -> Effect<UIImage?> {
-        let dataEffect = restClient.loadData(url).recieve(on: .global())
-        let imageEffect = restClient.loadImage(dataEffect).recieve(on: .main)
-        return imageEffect
+    public func loadImage(url: URL) async -> UIImage? {
+        do {
+            let dataResponse = try await restClient.loadData(url)
+            let image = restClient.loadImage(dataResponse.data, dataResponse.response)
+            return image
+        }
+        catch {
+            return nil
+        }
     }
 }
 
-extension NetworkClientEnvironment {
-    static let live = NetworkClientEnvironment(restClient: .live)
-    static let mock = NetworkClientEnvironment(restClient: .mock)
+extension NetworkClientEnvironment: DependencyKey {
+    static let liveValue: NetworkClientEnvironment = Self()
+}
+
+extension DependencyValues {
+    var networkClient: NetworkClientEnvironment {
+      get { self[NetworkClientEnvironment.self] }
+      set { self[NetworkClientEnvironment.self] = newValue }
+    }
 }
 
 public struct RestClient {
-    var loadData: (URL) -> Effect<(Data?, URLResponse?, Error?)>
-    var request: (URLRequest) -> Effect<(Data?, URLResponse?, Error?)>
-    var loadImage: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<UIImage?>
-    var getData: (Data?, URLResponse?, Error?) -> Data?
+    var loadData: (URL) async throws -> (data: Data, response: URLResponse)
+    var request: (URLRequest) async throws -> (data: Data, response: URLResponse)
+    var loadImage: (Data, URLResponse) -> UIImage?
 }
 
-extension RestClient {
-    static let live = Self(loadData: dataTask,
-                           request: urlRequestEffect,
-                           loadImage: loadImageEffect,
-                           getData: dataMap)
-    static let mock = Self(loadData: {_ in Effect{ _ in} },
-                           request: {_ in Effect{ _ in}},
-                           loadImage: {_ in Effect{ _ in} },
-                           getData: {_,_,_ in nil})
+extension RestClient: DependencyKey {
+    static public var liveValue: RestClient = Self(loadData: dataTask,
+                                                   request: urlRequestEffect,
+                                                   loadImage: loadImageEffect)
+                           
+    static let mock = Self(loadData: {_ in fatalError() },
+                           request: {_ in fatalError() },
+                           loadImage: {_,_ in nil })
 }
 
-fileprivate let dataTask: (URL) -> Effect<(Data?, URLResponse?, Error?)> = { url in
-    Effect { callback in
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            callback((data, response, error))
-        }
-        .resume()
+extension DependencyValues {
+    var restClient: RestClient {
+        get { self[RestClient.self] }
+        set { self[RestClient.self] = newValue }
     }
 }
 
-fileprivate let urlRequestEffect: (URLRequest) -> Effect<(Data?, URLResponse?, Error?)> = { request in
-    Effect { callback in
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            callback((data, response, error))
-        }
-        .resume()
-    }
+fileprivate let dataTask: (URL) async throws -> (data: Data, response: URLResponse) = { url in
+    let (data, response) = try await URLSession.shared.data(from: url)
+    return (data, response)
 }
 
-fileprivate let loadImageEffect: (Effect<(Data?, URLResponse?, Error?)>) -> Effect<UIImage?> = { dataEffect in
-    let effect: Effect<UIImage?> = dataEffect.map { $0.0 == nil ? nil : UIImage(data: $0.0!) }
-    return effect
+fileprivate let urlRequestEffect: (URLRequest) async throws -> (data: Data, response: URLResponse) = { request in
+        let result = try await URLSession.shared.data(for: request)
+        return result
 }
 
-fileprivate let dataMap: (Data?, URLResponse?, Error?) -> Data? = { data, _, _ in
-    data
+fileprivate let loadImageEffect: (Data, URLResponse) -> UIImage? = { data, _  in
+    UIImage(data: data)
 }

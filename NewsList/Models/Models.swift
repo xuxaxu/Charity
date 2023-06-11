@@ -27,7 +27,24 @@ struct Article: Identifiable, ItemWithImage, Equatable {
     }
 }
 
-struct Activity {
+struct Activity: Equatable {
+    static func == (lhs: Activity, rhs: Activity) -> Bool {
+        switch lhs.type {
+        case .openDetail(let url):
+            switch rhs.type {
+            case .openDetail(let url2):
+                return url == url2 && lhs.timestamp == rhs.timestamp
+            default: return false
+            }
+        case .openURL(let url):
+            switch rhs.type {
+            case .openURL(let url2):
+                return url == url2 && lhs.timestamp == rhs.timestamp
+            default: return false
+            }
+        }
+    }
+    
     let timestamp: Date
     let type: ActivityType
     

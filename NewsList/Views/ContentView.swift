@@ -1,8 +1,9 @@
 import SwiftUI
 import CoreData
+import ComposableArchitecture
 
 struct ContentView: View {
-    @ObservedObject var store: Store<AppState, AppAction<Article>>
+    let store: StoreOf<NewsListFeature>
 
     var body: some View {
        ItemsListView(store: store)
@@ -12,11 +13,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    @State static var state = AppState()
-    @State static var store = Store(value: state,
-                                    reducer: appReducer)
-    
     static var previews: some View {
+        let state = NewsListFeature.State(sources: [])
+        let store = Store(initialState: state,
+                          reducer: NewsListFeature())
         ContentView(store: store)
     }
 }

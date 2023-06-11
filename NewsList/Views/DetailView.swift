@@ -1,43 +1,46 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct DetailView: View {
-    typealias DetailViewState = Article
     
-    @ObservedObject var store: Store<DetailViewState, AppAction<Article>>
+    let store: StoreOf<ArticleFeature>
     
     var body: some View {
-        VStack {
-            HStack{
-                Spacer()
-                Text(store.value.source ?? "")
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            
+            VStack {
+                HStack{
+                    Spacer()
+                    Text(viewStore.article.source ?? "")
+                        .padding(DesignSizes.offset)
+                        .foregroundColor(.gray)
+                }
+                HStack{
+                    Spacer()
+                    Text(viewStore.article.date?.formatted(date: .long,
+                                                     time: .omitted) ?? "")
                     .padding(DesignSizes.offset)
-                    .foregroundColor(.gray)
-            }
-            HStack{
+                    .font(.caption)
+                    
+                }
+                Text(viewStore.article.title)
+                    .font(.headline)
+                    .padding(DesignSizes.offset)
+                if let image = viewStore.article.image {
+                    Image(uiImage: image).resizable()
+                        .scaledToFit()
+                        .cornerRadius(DesignSizes.cornerRadius)
+                }
+                Text(viewStore.article.text ?? "")
+                    .padding()
+                    .padding(DesignSizes.offset)
                 Spacer()
-                Text(store.value.date?.formatted(date: .long,
-                                                 time: .omitted) ?? "")
-                .padding(DesignSizes.offset)
-                .font(.caption)
-                
+                Text(viewStore.article.url?.absoluteString ?? "no link")
+                    .foregroundColor(.blue)
+                    .underline()
+                    .padding(DesignSizes.offset)
+                Spacer()
             }
-            Text(store.value.title)
-                .font(.headline)
-                .padding(DesignSizes.offset)
-            if let image = store.value.image {
-                Image(uiImage: image).resizable()
-                    .scaledToFit()
-                    .cornerRadius(DesignSizes.cornerRadius)
-            }
-            Text(store.value.text ?? "")
-                .padding()
-                .padding(DesignSizes.offset)
-            Spacer()
-            Text(store.value.url?.absoluteString ?? "no link")
-                .foregroundColor(.blue)
-                .underline()
-                .padding(DesignSizes.offset)
-            Spacer()
         }
     }
 }
@@ -54,10 +57,20 @@ struct DetailView_Previews: PreviewProvider {
                                        image: nil,
                                        date: Date(),
                                        urlToImage: nil)
+        let state = ArticleFeature.State(article: article)
         
-        DetailView(store: Store(value: article,
-                                reducer: {_,_ in
-            return []
-        }))
+        DetailView(store: Store(initialState: state, reducer: ArticleFeature()))
+    }
+}
+
+struct ArticleFeature: ReducerProtocol {
+    struct State: Equatable {
+        var article: Article
+    }
+    enum Action {
+    }
+    func reduce(into state: inout State,
+                action: Action) -> EffectTask<Action> {
+        return .none
     }
 }

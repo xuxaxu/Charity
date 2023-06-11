@@ -1,27 +1,28 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct SourceView: View {
-    @ObservedObject var store: Store<Source, FlagAction>
+    let store: StoreOf<SourceFeature>
     var body: some View {
-        HStack {
-            HStack(alignment: .top) {
-                Text(store.value.name)
-                    .font(.headline)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            HStack {
+                HStack(alignment: .top) {
+                    Text(viewStore.source.name)
+                        .font(.headline)
+                        .layoutPriority(1)
+                    VStack(alignment: .leading) {
+                        Text(viewStore.source.category ?? "")
+                        Text(viewStore.source.language ?? "")
+                        Text(viewStore.source.country ?? "")
+                    }
+                    .font(.caption)
                     .layoutPriority(1)
-                VStack(alignment: .leading) {
-                    Text(store.value.category ?? "")
-                    Text(store.value.language ?? "")
-                    Text(store.value.country ?? "")
                 }
-                .font(.caption)
-                .layoutPriority(1)
+                Spacer()
+                FlagView(store: viewStore.scope(state: { $0.on }))
             }
-            //.padding(DesignSizes.bigOffset)
-            Spacer()
-            FlagView(store: store.view(value: { $0.include },
-                                       action: { $0}))
+            .padding(DesignSizes.offset)
         }
-        .padding(DesignSizes.offset)
     }
 }
 
@@ -33,8 +34,11 @@ struct SourceView_Previews: PreviewProvider {
                                       category: "common",
                                       language: "eng",
                                       country: "gb")
-        let source = Source(netSource)
-        SourceView(store: Store(value: source,
-                                reducer: {_, _ in []}))
+        let source =  Source(netSource)
+        let state = SourceFeature.State(source: source,
+                                        on: false)
+        SourceView(store:  Store(initialState: state,
+                                 reducer: SourceFeature(),
+                                 prepareDependencies: { _ in }))
     }
 }
