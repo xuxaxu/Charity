@@ -6,16 +6,44 @@ struct SourceFeature: ReducerProtocol {
     struct State: Equatable {
         var source: Source
         var on: Bool
+        @PresentationState var flagState: FlagFeature.State?
     }
     enum Action {
-        case on
-        case off
+        case start(PresentationAction<FlagFeature.Action>)
+        case swap(PresentationAction<FlagFeature.Action>)
     }
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    var body: some ReducerProtocolOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .start:
+                state.flagState = FlagFeature.State(flag: state.on)
+            case .swap:
+                guard let flag = state.flagState?.flag else {
+                    return .none
+                }
+                state.on = flag
+                state.flagState = nil
+            }
+            return .none
+        }
+        .ifLet(\.$flagState, action: /Action.swap) {
+            FlagFeature()
+        }
+    }
+}
+
+struct FlagFeature: ReducerProtocol {
+    struct State: Equatable {
+        var flag: Bool
+    }
+    enum Action {
+        case swap
+    }
+    func reduce(into state: inout State,
+                action: Action) -> EffectTask<Action> {
         switch action {
-        case .off: state.on = false
-        case .on: state.on = true
+        case .swap: state.flag = !state.flag
         }
         return .none
     }

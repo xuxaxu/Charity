@@ -13,10 +13,7 @@ struct ChooseSourcesView: View {
                     }
                     List {
                         ForEach(viewStore.sources) { item in
-                            SourceView(store: viewStore.view(value: {$0.sources[$0.sources.firstIndex(where: { $0.id == item.id})!]},
-                                                         action: { action in
-                                let index = viewStore.sources.firstIndex(where: {$0.id == item.id})!
-                                return action == .on ? .on(index) : .off(index)}))
+                                SourceView(store: Store(initialState: SourceFeature.State(source: item, on: item.include), reducer: SourceFeature()))
                         }
                     }
                     /*

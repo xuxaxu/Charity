@@ -22,6 +22,8 @@
 		C91A366D29A392CB00BFB1F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A366C29A392CB00BFB1F1 /* Constants.swift */; };
 		C91A366F29A395FA00BFB1F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A366E29A395FA00BFB1F1 /* DetailView.swift */; };
 		C91A367529A3BD2A00BFB1F1 /* NewsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91A367429A3BD2A00BFB1F1 /* NewsListFeature.swift */; };
+		C931FE4A2A377E8B003CE1B0 /* ItemsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931FE492A377E8B003CE1B0 /* ItemsFeature.swift */; };
+		C931FE4C2A37809C003CE1B0 /* ImageFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C931FE4B2A37809C003CE1B0 /* ImageFeature.swift */; };
 		C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58BE29C459C800A6CC8F /* SourceView.swift */; };
 		C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58C029C45BA500A6CC8F /* DesignSizes.swift */; };
 		C93F58C329C4766500A6CC8F /* ArticlesNetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F58C229C4766500A6CC8F /* ArticlesNetworkEnvironment.swift */; };
@@ -74,6 +76,8 @@
 		C91A366C29A392CB00BFB1F1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C91A366E29A395FA00BFB1F1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C91A367429A3BD2A00BFB1F1 /* NewsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListFeature.swift; sourceTree = "<group>"; };
+		C931FE492A377E8B003CE1B0 /* ItemsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsFeature.swift; sourceTree = "<group>"; };
+		C931FE4B2A37809C003CE1B0 /* ImageFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeature.swift; sourceTree = "<group>"; };
 		C93F58BE29C459C800A6CC8F /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
 		C93F58C029C45BA500A6CC8F /* DesignSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSizes.swift; sourceTree = "<group>"; };
 		C93F58C229C4766500A6CC8F /* ArticlesNetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesNetworkEnvironment.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				C91A367429A3BD2A00BFB1F1 /* NewsListFeature.swift */,
+				C931FE4B2A37809C003CE1B0 /* ImageFeature.swift */,
+				C931FE492A377E8B003CE1B0 /* ItemsFeature.swift */,
 				C9D3E8C429C1E7DF0019A3ED /* SourcesFeature.swift */,
 				C9689F542A1E4AB100F2A827 /* SourceFeature.swift */,
 				C9689F522A1E3EA800F2A827 /* MainFeature.swift */,
@@ -387,10 +393,12 @@
 				C91A362C29A38B3100BFB1F1 /* Persistence.swift in Sources */,
 				C9F86E1529C35DC2006F5CBA /* SourcesEnvironment.swift in Sources */,
 				C93F58BF29C459C800A6CC8F /* SourceView.swift in Sources */,
+				C931FE4A2A377E8B003CE1B0 /* ItemsFeature.swift in Sources */,
 				C97C962D29E5B7F900E2E98B /* AppEnvironment.swift in Sources */,
 				C93F58C329C4766500A6CC8F /* ArticlesNetworkEnvironment.swift in Sources */,
 				C91A366F29A395FA00BFB1F1 /* DetailView.swift in Sources */,
 				C9D3E8C529C1E7DF0019A3ED /* SourcesFeature.swift in Sources */,
+				C931FE4C2A37809C003CE1B0 /* ImageFeature.swift in Sources */,
 				C91A367529A3BD2A00BFB1F1 /* NewsListFeature.swift in Sources */,
 				C91A362529A38B3100BFB1F1 /* ContentView.swift in Sources */,
 				C93F58C129C45BA500A6CC8F /* DesignSizes.swift in Sources */,
@@ -738,7 +746,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.52.0;
+				minimumVersion = 0.53.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

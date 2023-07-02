@@ -17,11 +17,18 @@ struct SourcesFeature: ReducerProtocol {
         case closeAlert
     }
     
+    @Dependency(\.sources) var sourcesNetworkClient
+    
     func reduce(into state: inout State,
                 action: Action) -> EffectTask<Action> {
         switch action {
         case .load:
-            return CurrentSources.load().map{ Action.set($0) }
+            return .run{ send in
+                do {
+                    let sources = try await self.sourcesNetworkClient.load()
+                    await send(.set(sources))
+                }
+            }
         case .on(let index):
             state.sources[index] = Source(state.sources[index], include: true)
             if state.sources.filter({ $0.include }).count > 20 {

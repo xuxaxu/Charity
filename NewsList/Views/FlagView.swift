@@ -9,7 +9,7 @@ struct FlagView: View {
             observe: { $0 }) { viewStore in
                 VStack {
                     Button(
-                        action: { viewStore.send( viewStore.flag ? .off : .on)},
+                        action: { viewStore.send(.swap)},
                         label: {viewStore.flag ?
                         Label("", systemImage: "checkmark.circle")
                             .foregroundColor(.green) :
@@ -23,23 +23,5 @@ struct FlagView: View {
 struct FlagView_Previews: PreviewProvider {
     static var previews: some View {
         FlagView(store: Store(initialState: FlagFeature.State(flag: false), reducer: FlagFeature()))
-    }
-}
-
-struct FlagFeature: ReducerProtocol {
-    struct State: Equatable {
-        var flag: Bool
-    }
-    enum Action {
-        case on
-        case off
-    }
-    func reduce(into state: inout State,
-                action: Action) -> EffectTask<Action> {
-        switch action {
-        case .off: state.flag = false
-        case .on: state.flag = true
-        }
-        return .none
     }
 }

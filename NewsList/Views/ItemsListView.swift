@@ -11,8 +11,7 @@ struct ItemsListView: View {
             NavigationView {
                 VStack {
                     HStack {
-                        NavigationLink { ChooseSourcesView(store: viewStore.view(value: { $0.sourcesState},
-                                                                             action: { viewStore.sources($0) })) } label: { Text("setup domains") }
+                        NavigationLink { ChooseSourcesView(store: Store( initialState: SourcesFeature.State(sources: viewStore.sources, alertSourcesMoreThan20: true),  reducer: SourcesFeature()))}  label: { Text("setup domains") }
                             .padding(DesignSizes.bigOffset)
                         Spacer()
                         Button("get news") {
@@ -24,7 +23,7 @@ struct ItemsListView: View {
                         ForEach(viewStore.items) { item in
                             NavigationLink {
                                 let id = item.id
-                                DetailView(store: viewStore.view(value: { $0.items.first(where: { $0.id == id })! }, action: { $0 }))
+                                DetailView(store: Store(initialState: ArticleFeature.State(article: item), reducer: ArticleFeature()))
                             } label: {
                                 HStack {
                                     if let image = item.image {
