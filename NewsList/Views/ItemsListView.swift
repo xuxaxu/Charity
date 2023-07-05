@@ -6,12 +6,13 @@ struct ItemsListView: View {
     let store: StoreOf<NewsListFeature>
 
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            
-            NavigationView {
+        NavigationStack {
+            WithViewStore(self.store, observe: { $0 }) { viewStore in
                 VStack {
                     HStack {
-                        NavigationLink { ChooseSourcesView(store: Store( initialState: SourcesFeature.State(sources: viewStore.sources, alertSourcesMoreThan20: true),  reducer: SourcesFeature()))}  label: { Text("setup domains") }
+                        Button {
+                            viewStore.send(.chooseSources)
+                        } label: { Text("setup domains") }
                             .padding(DesignSizes.bigOffset)
                         Spacer()
                         Button("get news") {
@@ -47,6 +48,15 @@ struct ItemsListView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+            }
+        }
+        .sheet(
+            store: self.store.scope(
+                state: \.$updateSources,
+                action: { .finChooseSources($0)})
+        ) { chooseSourcesStore in
+            NavigationStack{
+                ChooseSourcesView(store: chooseSourcesStore)
             }
         }
     }

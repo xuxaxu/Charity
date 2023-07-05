@@ -4,32 +4,37 @@ import ComposableArchitecture
 struct ChooseSourcesView: View {
     let store: StoreOf<SourcesFeature>
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            
-            NavigationView {
-                VStack {
-                    Button("get sources") {
-                        viewStore.send(.load)
-                    }
-                    List {
-                        ForEach(viewStore.sources) { item in
-                                SourceView(store: Store(initialState: SourceFeature.State(source: item, on: item.include), reducer: SourceFeature()))
+        NavigationStack {
+            WithViewStore(self.store, observe: { $0 }) { viewStore in
+                List {
+                    ForEach(viewStore.sources, id: \.id) { item in
+                        HStack {
+                            SourceView(store: Store(initialState: SourceFeature.State(source: item), reducer: SourceFeature()))
+                            Spacer()
+                            Button {
+                                viewStore.send(.swap(item.id))
+                            } label: {
+                                FlagView(flag: item.include)
+                            }
                         }
+                        .padding()
                     }
-                    /*
-                     .alert(isPresented: Binding(get: { self.store.value.alertSourcesMoreThan20 },
-                     set: {_ in})) {
-                     Alert(title: Text("21 sources choosen"),
-                     message: Text("more than 20 sources is forbidden"),
-                     dismissButton: .default(Text("OK")))
-                     }
-                     */
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Text("choose sources of news")
-                            .foregroundColor(.secondary)
-                    }
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    self.store.send(.load)
+                } label: {
+                    Text("get sources")
+                }
+            }
+            ToolbarItem {
+                Button {
+                    self.store.send(.finSelect)
+                } label: {
+                    Text("done")
                 }
             }
         }
