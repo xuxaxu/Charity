@@ -5,7 +5,6 @@ import SwiftUI
 struct NewsListFeature: ReducerProtocol {
     
     struct State: Equatable {
-        @PresentationState var itemsControl: ItemsFeature.State?
         @PresentationState var updateSources: SourcesFeature.State?
         
         static func == (lhs: NewsListFeature.State, rhs: NewsListFeature.State) -> Bool {
@@ -26,22 +25,45 @@ struct NewsListFeature: ReducerProtocol {
     enum Action {
         case reload
         case nextPortion
-        case items(PresentationAction<ItemsFeature.Action>)
+        case addItem(Article)
+        case clear
+        case set([Article])
+        case addImage(URL, UIImage)
+        case loadImage(URL)
         case chooseSources
         case finChooseSources(PresentationAction<SourcesFeature.Action>)
     }
     
     @Dependency(\.articleNetwork) var articleNetworkClient
+    @Dependency(\.networkClient) var networkClient
 
     var body: some ReducerProtocolOf<Self> {
         Reduce { state, action in
             switch action {
-            case .items:
-                guard let items = state.itemsControl?.items as? [Article] else {
-                    return .none
-                }
+            case .addItem(let item):
+                state.items.append(item)
+            case .clear:
+                state.items = []
+            case .set(let items):
                 state.items = items
-                state.itemsControl = nil
+                return .run { send in
+                    for item in items {
+                        if let url = item.urlToImage {
+                            await send(.loadImage(url))
+                        }
+                    }
+                }
+            case let .addImage(url, image):
+                let itemsWithUrl = state.items.indices.filter{ state.items[$0].urlToImage == url }
+                for index in itemsWithUrl {
+                    state.items[index].image = image
+                }
+            case .loadImage(let url):
+                return .run { send in
+                    if let image = await networkClient.loadImage(url: url) {
+                        await send(.addImage(url, image))
+                    }
+                }
             case .chooseSources:
                 state.updateSources = SourcesFeature.State(sources: state.sources,
                                                            alertSourcesMoreThan20: false)
@@ -56,12 +78,10 @@ struct NewsListFeature: ReducerProtocol {
                 state.currentPage = 1
                 let domain = state.domains
                 state.dataFromPersistance = false
-                state.itemsControl = ItemsFeature.State(items: state.items,
-                                                        imageFeature: ImageFeature.State())
                 return .run { [domain] send in
                     do {
                         let effects = try await self.articleNetworkClient.load(domain, 1)
-                        await send(.items(.presented(.set(effects))))
+                        await send(.set(effects))
                     }
                 }
                 
@@ -72,10 +92,9 @@ struct NewsListFeature: ReducerProtocol {
                 state.currentPage += 1
                 let page = state.currentPage
                 let domains = state.domains
-                state.itemsControl = ItemsFeature.State(items: state.items, imageFeature: ImageFeature.State())
                 return .run { send in
                     let items = try await articleNetworkClient.load(domains, page)
-                    await send(.items(.presented(.set(items))))
+                    await send(.set(items))
                 }
             case .finChooseSources:
                 return .none
@@ -84,9 +103,6 @@ struct NewsListFeature: ReducerProtocol {
         }
         .ifLet(\.$updateSources, action: /Action.finChooseSources) {
             SourcesFeature()
-        }
-        .ifLet(\.$itemsControl, action: /Action.items) {
-            ItemsFeature()
         }
     }
         

@@ -174,8 +174,8 @@
             filePath = "NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -231,78 +231,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7CBFDA72-AE61-4F77-B468-22AF3A05C908"
+            uuid = "1B93CE07-D708-4B03-8FDA-61FAB66DCF20"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewsList/Features/NewsListFeature.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "7CBFDA72-AE61-4F77-B468-22AF3A05C908 - 17ee63b5fb5389cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
-                  moduleName = "NewsList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "352">
-               </Location>
-               <Location
-                  uuid = "7CBFDA72-AE61-4F77-B468-22AF3A05C908 - 17ee63b5fb5389cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
-                  moduleName = "NewsList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "364">
-               </Location>
-               <Location
-                  uuid = "7CBFDA72-AE61-4F77-B468-22AF3A05C908 - 17ee63b5fb5389cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
-                  moduleName = "NewsList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "372">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1B93CE07-D708-4B03-8FDA-61FAB66DCF20"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NewsList/Features/NewsListFeature.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -351,6 +288,21 @@
                   endingLineNumber = "56"
                   offsetFromSymbolStart = "1180">
                </Location>
+               <Location
+                  uuid = "1B93CE07-D708-4B03-8FDA-61FAB66DCF20 - 17ee63b5fb538bdc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "1164">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -364,8 +316,8 @@
             filePath = "NewsList/Features/NewsListFeature.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -428,8 +380,8 @@
             filePath = "NewsList/Features/NewsListFeature.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -492,6 +444,367 @@
                   startingLineNumber = "64"
                   endingLineNumber = "64"
                   offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "6A82B92E-798E-4F27-8FF5-26F8946DD4DC - f93f1c2bdc22a0be"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "6A82B92E-798E-4F27-8FF5-26F8946DD4DC - bdf7c7a77b7a2243"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "6A82B92E-798E-4F27-8FF5-26F8946DD4DC - 6909655e6c29f4bc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "6A82B92E-798E-4F27-8FF5-26F8946DD4DC - 114847c8b433a2b9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2089B61-9230-41C6-BCA9-126293F5DE90"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Features/NewsListFeature.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E2089B61-9230-41C6-BCA9-126293F5DE90 - 17ee63b5fb538b3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1108">
+               </Location>
+               <Location
+                  uuid = "E2089B61-9230-41C6-BCA9-126293F5DE90 - 5202593b1e288e31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Int) -&gt; Swift.Bool in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "372">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFB47293-CC21-4A6C-97B0-6B0D1B6D6A88"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Features/NewsListFeature.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "AFB47293-CC21-4A6C-97B0-6B0D1B6D6A88 - 5169aeba82f52e01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "AFB47293-CC21-4A6C-97B0-6B0D1B6D6A88 - eef44da425546882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #3 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "AFB47293-CC21-4A6C-97B0-6B0D1B6D6A88 - fe116f518f009267"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #3 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "AFB47293-CC21-4A6C-97B0-6B0D1B6D6A88 - ab3a2de88b921645"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #3 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5B17EA0-2741-4DD0-9064-70885F922DF2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Features/NewsListFeature.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "A5B17EA0-2741-4DD0-9064-70885F922DF2 - 5169aeba82f5d0b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "A5B17EA0-2741-4DD0-9064-70885F922DF2 - fe116f518f006cd3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "376">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B47B58C6-8CFD-456B-B58D-64CA4C2326BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D0C4103B-A4AC-4967-BF69-5C0C94D03305"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Features/NewsListFeature.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D0C4103B-A4AC-4967-BF69-5C0C94D03305 - 6909655e6c29f55d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D0C4103B-A4AC-4967-BF69-5C0C94D03305 - a17e7ed424346f5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "D0C4103B-A4AC-4967-BF69-5C0C94D03305 - d9634a52fc30c95b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #4 @Sendable (ComposableArchitecture.Send&lt;NewsList.NewsListFeature.Action&gt;) async throws -&gt; () in closure #1 (inout NewsList.NewsListFeature.State, NewsList.NewsListFeature.Action) -&gt; ComposableArchitecture.EffectPublisher&lt;NewsList.NewsListFeature.Action, Swift.Never&gt; in NewsList.NewsListFeature.body.getter : some"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Features/NewsListFeature.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4D9A126-76BB-45AB-93A9-BD5BE2E24770"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "A4D9A126-76BB-45AB-93A9-BD5BE2E24770 - f47e99197981583b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;NewsList.NetworkArticle&gt;) -&gt; Swift.Array&lt;NewsList.Article&gt; in variable initialization expression of NewsList.getArticleFromNetworkArticle : (Swift.Array&lt;NewsList.NetworkArticle&gt;) -&gt; Swift.Array&lt;NewsList.Article&gt;"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "A4D9A126-76BB-45AB-93A9-BD5BE2E24770 - a353ed7e44463fe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (NewsList.NetworkArticle) -&gt; Swift.Optional&lt;NewsList.Article&gt; in closure #1 (Swift.Array&lt;NewsList.NetworkArticle&gt;) -&gt; Swift.Array&lt;NewsList.Article&gt; in variable initialization expression of NewsList.getArticleFromNetworkArticle : (Swift.Array&lt;NewsList.NetworkArticle&gt;) -&gt; Swift.Array&lt;NewsList.Article&gt;"
+                  moduleName = "NewsList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xuxa/Projects/News/NewsListSwiftUI/NewsList/NewsList/Enviroments/ArticlesNetworkEnvironment.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>

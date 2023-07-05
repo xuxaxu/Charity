@@ -10,11 +10,13 @@ struct ArticleNetworkEnvironment {
     
     var getArticles: ([NetworkArticle]) -> [Article]
     
-    public func load(_ domains: String, _ page: Int) async throws -> [Article] {
+    public func load(_ domains: String,
+                     _ page: Int) async throws -> [Article] {
         guard let request = urlRequest(domains, page) else {
             return []
         }
-        return getArticles(parseNetworkArticles(try await restClient.request(request).data))
+        return getArticles(
+            parseNetworkArticles(try await restClient.request(request).data))
     }
 }
 
@@ -80,7 +82,8 @@ struct ArticleNetworkParserImp {
                        source: article.source?.name,
                        title: title,
                        text: article.description,
-                       date: Date() // article.publishedAt
+                       date: Date(),
+                       urlToImage: URL(string: article.urlToImage ?? "")
         )
     }
 }
