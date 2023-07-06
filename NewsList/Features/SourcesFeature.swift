@@ -14,10 +14,15 @@ struct SourcesFeature: ReducerProtocol {
         case swap(UUID)
         case set([Source])
         case closeAlert
-        case finSelect
+        case fin
+        case delegate(Delegate)
+        enum Delegate {
+            case finSelect
+        }
     }
     
     @Dependency(\.sources) var sourcesNetworkClient
+    @Dependency(\.dismiss) var dismiss
     
     var body: some ReducerProtocolOf<Self> {
         Reduce { state, action in
@@ -45,7 +50,12 @@ struct SourcesFeature: ReducerProtocol {
                 state.sources = sources
             case .closeAlert:
                 state.alertSourcesMoreThan20 = false
-            case .finSelect:
+            case .fin:
+                return .run {send in
+                    await send(.delegate(.finSelect))
+                    await self.dismiss()
+                }
+            case .delegate:
                 return .none
             }
             return .none

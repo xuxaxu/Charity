@@ -32,7 +32,7 @@ struct ChooseSourcesView: View {
             }
             ToolbarItem {
                 Button {
-                    self.store.send(.finSelect)
+                    self.store.send(.fin)
                 } label: {
                     Text("done")
                 }

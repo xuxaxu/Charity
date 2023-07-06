@@ -67,12 +67,11 @@ struct NewsListFeature: ReducerProtocol {
             case .chooseSources:
                 state.updateSources = SourcesFeature.State(sources: state.sources,
                                                            alertSourcesMoreThan20: false)
-            case .finChooseSources(.presented(.finSelect)):
+            case .finChooseSources(.presented(.delegate(.finSelect))):
                 guard let sources = state.updateSources?.sources else {
                     return .none
                 }
                 state.sources = sources
-                state.updateSources = nil
                 return .run { send in
                     await send(.reload)
                 }
