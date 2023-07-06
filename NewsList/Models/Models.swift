@@ -58,13 +58,11 @@ struct NewsListItem: Identifiable {
     let id: UUID
     let title: String
     let image: UIImage?
-    let detailed: Int
     
-    init(from article: Article, detailed: Int) {
+    init(from article: Article) {
         self.id = article.id
         self.title = article.title
         self.image = article.image
-        self.detailed = detailed
     }
 }
 

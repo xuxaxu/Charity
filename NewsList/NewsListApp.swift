@@ -3,7 +3,6 @@ import ComposableArchitecture
 
 @main
 struct NewsListApp: App {
-    let persistenceController = PersistenceController.shared
     
     @State var store = Store(initialState: NewsListFeature.State(sources: []),
                       reducer: NewsListFeature()._printChanges(),

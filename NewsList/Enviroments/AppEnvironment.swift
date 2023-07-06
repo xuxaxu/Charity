@@ -5,7 +5,6 @@ struct AppEnvironment {
     var uuid: () -> UUID
     @Dependency(\.sources) var getSourcesEnvironment: SourcesEnvironment
     @Dependency(\.articleNetwork) var getArticlesEnvironment: ArticleNetworkEnvironment
-    @Dependency(\.fileClient) var persistanceEnvironment: FileClient
 }
 
 extension AppEnvironment: DependencyKey {

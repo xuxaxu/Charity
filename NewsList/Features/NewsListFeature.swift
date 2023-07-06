@@ -5,6 +5,7 @@ import SwiftUI
 struct NewsListFeature: ReducerProtocol {
     
     struct State: Equatable {
+        
         @PresentationState var updateSources: SourcesFeature.State?
         
         static func == (lhs: NewsListFeature.State, rhs: NewsListFeature.State) -> Bool {
@@ -12,7 +13,6 @@ struct NewsListFeature: ReducerProtocol {
         }
         
         var items: [Article] = []
-        var detailed: [UUID: Int] = [:]
         var activityFeed: [Activity] = []
         var dataFromPersistance = false
         var currentPage = 1
@@ -73,7 +73,9 @@ struct NewsListFeature: ReducerProtocol {
                 }
                 state.sources = sources
                 state.updateSources = nil
-                return .none
+                return .run { send in
+                    await send(.reload)
+                }
             case .reload:
                 state.currentPage = 1
                 let domain = state.domains

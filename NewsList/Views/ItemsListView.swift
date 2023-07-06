@@ -8,22 +8,9 @@ struct ItemsListView: View {
     var body: some View {
         NavigationStack {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
-                VStack {
-                    HStack {
-                        Button {
-                            viewStore.send(.chooseSources)
-                        } label: { Text("setup domains") }
-                            .padding(DesignSizes.bigOffset)
-                        Spacer()
-                        Button("get news") {
-                            store.send(.reload)
-                        }
-                        .padding(DesignSizes.bigOffset)
-                    }
-                    List {
-                        ForEach(viewStore.items) { item in
+                List {
+                    ForEach(viewStore.items) { item in
                             NavigationLink {
-                                let id = item.id
                                 DetailView(store: Store(initialState: ArticleFeature.State(article: item), reducer: ArticleFeature()))
                             } label: {
                                 HStack {
@@ -35,17 +22,20 @@ struct ItemsListView: View {
                                             .cornerRadius(DesignSizes.cornerRadius)
                                     }
                                     Text(item.title)
-                                    Text(String(viewStore.detailed[item.id] ?? 0))
                                 }
                             }
                         }
-                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Text(viewStore.domains)
                             .lineLimit(3)
                             .foregroundColor(.secondary)
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            self.store.send(.chooseSources)
+                        } label: { Text("setup domains") }
                     }
                 }
             }

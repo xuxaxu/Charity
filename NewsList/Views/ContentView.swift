@@ -1,5 +1,5 @@
 import SwiftUI
-import CoreData
+
 import ComposableArchitecture
 
 struct ContentView: View {
@@ -7,7 +7,6 @@ struct ContentView: View {
 
     var body: some View {
        ItemsListView(store: store)
-        //ChooseSourcesView(store: Store(value: store.value.sourcesState, reducer: sourceReducer))
     }
 }
 
